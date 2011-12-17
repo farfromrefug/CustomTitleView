@@ -59,15 +59,15 @@ CGRect ScreenBounds() {
         self.backgroundColor = [UIColor clearColor];
         self.userInteractionEnabled = TRUE;
         
-        _titleLabel = [[[NIAttributedLabel alloc] init] autorelease];
-//        _titleLabel.style = TTSTYLE(customNavTitleTitle);
+        _titleLabel = [[[TTLabel alloc] init] autorelease];
+        _titleLabel.style = TTSTYLE(customNavTitleTitle);
 //        _titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _titleLabel.backgroundColor = [UIColor clearColor];
 //        _titleLabel.contentMode = UIViewContentModeScaleToFill;
         _titleLabel.userInteractionEnabled = FALSE;
         
-        _subTitleLabel = [[[NIAttributedLabel alloc] init] autorelease];
-//        _subTitleLabel.style = TTSTYLE(customNavTitleSubtitle);
+        _subTitleLabel = [[[TTLabel alloc] init] autorelease];
+        _subTitleLabel.style = TTSTYLE(customNavTitleSubtitle);
 //        _subTitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _subTitleLabel.backgroundColor = [UIColor clearColor]; 
 //        _subTitleLabel.contentMode = UIViewContentModeBottom;

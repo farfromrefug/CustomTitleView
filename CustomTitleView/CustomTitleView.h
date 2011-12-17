@@ -8,13 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@class NIAttributedLabel;
 @interface CustomTitleView : UIButton {
-    NIAttributedLabel* _titleLabel;
-    NIAttributedLabel* _subTitleLabel;   
+    TTLabel* _titleLabel;
+    TTLabel* _subTitleLabel;   
 }
-@property (nonatomic, retain) NIAttributedLabel* titleView;
-@property (nonatomic, retain) NIAttributedLabel* subtitleView;
+@property (nonatomic, retain) TTLabel* titleView;
+@property (nonatomic, retain) TTLabel* subtitleView;
 @property (nonatomic, retain) NSString* title;
 @property (nonatomic, retain) NSString* subtitle;
 @property CGFloat yDecale;
