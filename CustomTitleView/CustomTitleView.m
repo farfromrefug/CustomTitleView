@@ -63,14 +63,14 @@ CGRect ScreenBounds() {
         _titleLabel.style = TTSTYLE(customNavTitleTitle);
 //        _titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _titleLabel.backgroundColor = [UIColor clearColor];
-//        _titleLabel.contentMode = UIViewContentModeScaleToFill;
+        _titleLabel.contentMode = UIViewContentModeScaleAspectFit;
         _titleLabel.userInteractionEnabled = FALSE;
         
         _subTitleLabel = [[[TTLabel alloc] init] autorelease];
         _subTitleLabel.style = TTSTYLE(customNavTitleSubtitle);
 //        _subTitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _subTitleLabel.backgroundColor = [UIColor clearColor]; 
-//        _subTitleLabel.contentMode = UIViewContentModeBottom;
+        _subTitleLabel.contentMode = UIViewContentModeScaleAspectFit;
         _subTitleLabel.userInteractionEnabled = FALSE;
         
         [self addSubview:_titleLabel]; 
@@ -107,8 +107,7 @@ CGRect ScreenBounds() {
 -(void) setFrame:(CGRect)frame
 {
     [super setFrame:frame];
-//    CGRect superframe = self.superview.frame;
-
+    [self setNeedsLayout];
 }
 
 -(void)layoutSubviews {
@@ -116,9 +115,10 @@ CGRect ScreenBounds() {
     CGFloat height = [self.subtitle length] > 0 ? self.height /2 : self.height;
     int decaleLeft = self.frame.origin.x;
     int decaleRight = self.superview.width - self.frame.origin.x - self.frame.size.width;
+    if (decaleRight < 0 || decaleLeft < 0) return; // this is for good pop behavior
+    
     int decale = MAX(decaleRight, decaleLeft);
     CGRect realFrame = CGRectMake(decale, self.frame.origin.y, self.superview.width - 2*decale, self.superview.height);
-    
     _titleLabel.frame = CGRectMake(realFrame.origin.x - self.frame.origin.x, self.yDecale
                                    , realFrame.size.width
                                    , height - self.yDecale);
