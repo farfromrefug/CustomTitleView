@@ -63,20 +63,20 @@ CGRect ScreenBounds() {
         _titleLabel.style = TTSTYLE(customNavTitleTitle);
 //        _titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _titleLabel.backgroundColor = [UIColor clearColor];
-        _titleLabel.contentMode = UIViewContentModeScaleAspectFit;
+//        _titleLabel.contentMode = UIViewContentModeScaleAspectFit;
         _titleLabel.userInteractionEnabled = FALSE;
         
         _subTitleLabel = [[[TTLabel alloc] init] autorelease];
         _subTitleLabel.style = TTSTYLE(customNavTitleSubtitle);
 //        _subTitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _subTitleLabel.backgroundColor = [UIColor clearColor]; 
-        _subTitleLabel.contentMode = UIViewContentModeScaleAspectFit;
+//        _subTitleLabel.contentMode = UIViewContentModeScaleAspectFit;
         _subTitleLabel.userInteractionEnabled = FALSE;
         
         [self addSubview:_titleLabel]; 
         [self addSubview:_subTitleLabel]; 
         
-        self.frame = CGRectMake(0, 0, ScreenBounds().size.width, UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])?32:40);
+        self.frame = CGRectMake(0, 0, ScreenBounds().size.width, UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])?32:44);
         _titleLabel.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height/2);
         _subTitleLabel.frame = CGRectMake(0, self.bounds.size.height/2
                                           , self.bounds.size.width, self.bounds.size.height/2);
@@ -119,10 +119,12 @@ CGRect ScreenBounds() {
     
     int decale = MAX(decaleRight, decaleLeft);
     CGRect realFrame = CGRectMake(decale, self.frame.origin.y, self.superview.width - 2*decale, self.superview.height);
-    _titleLabel.frame = CGRectMake(realFrame.origin.x - self.frame.origin.x, self.yDecale
+    
+    CGRect titleFrame = CGRectMake(realFrame.origin.x - self.frame.origin.x, self.yDecale
                                    , realFrame.size.width
                                    , height - self.yDecale);
-    _subTitleLabel.frame = CGRectMake(_titleLabel.left, self.height - height + self.yDecale
-                                      , _titleLabel.width, height - self.yDecale);
+    _titleLabel.frame = titleFrame;
+    _subTitleLabel.frame = CGRectZero;
 }
+
 @end
